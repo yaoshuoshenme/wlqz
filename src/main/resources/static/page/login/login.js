@@ -16,15 +16,11 @@ layui.use(['form','layer','jquery'],function(){
 
         $.post(data.form.action,data.field,function (datas) {
             if(datas.code == 1){
-                setTimeout(function(){
                     window.sessionStorage.setItem("name",data.field.name);
                     window.location.href = "/index.html";
-                },1000);
             }
             if(datas.code == 2){
-                setTimeout(function(){
                     window.location.href = "/unauthor.html";
-                },1000);
             }
         })
 

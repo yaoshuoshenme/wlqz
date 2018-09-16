@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.wlqz.mapper.AdminMapper" >
+
+
+  <select id="selectByName" resultType="com.edu.wlqz.pojo.Admin" parameterType="java.lang.String" >
+    select *from t_admin where  name= #{name}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_admin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <select id="selectByPage" resultType="com.edu.wlqz.pojo.Admin">
+    select * from t_admin order by id limit #{page},#{limit}
+  </select>
+
+  <select id="selectAll" resultType="com.edu.wlqz.pojo.Admin">
+    select * from  t_admin;
+  </select>
+
+  <update id="updateById" parameterType="com.edu.wlqz.pojo.Admin" >
+    update t_admin
+    set name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="saveAdmin" parameterType="com.edu.wlqz.pojo.Admin">
+    insert into t_admin (name, password, flag) values(#{name},#{password},0)
+  </insert>
+</mapper>
